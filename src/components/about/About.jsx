@@ -14,6 +14,7 @@ const About = () => {
         </div>
       </div>
       <div className="about-right">
+        <div className="about-right-bg"></div>
         <h1 className="about-title">About Me</h1>
         <p className="about-sub">
           It is a long established fact that a reader will be distracted by the
