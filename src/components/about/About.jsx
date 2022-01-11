@@ -2,6 +2,7 @@ import React from 'react';
 
 import Award from '../../img/award.png';
 import Hobby from '../../img/hobby.jpeg';
+
 import './about.css';
 
 const About = () => {
@@ -10,7 +11,7 @@ const About = () => {
       <div className="about-left">
         <div className="about-card bg"></div>
         <div className="about-card">
-          <img src={Hobby} alt="" className="about-image" />
+          <img src={Hobby} alt="" className="about-image"></img>
         </div>
       </div>
       <div className="about-right">

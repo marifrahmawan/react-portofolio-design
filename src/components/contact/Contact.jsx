@@ -1,5 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+
+import { ThemeContext } from '../../context';
 
 import Phone from '../../img/phone.png';
 import Address from '../../img/address.png';
@@ -7,6 +9,7 @@ import Email from '../../img/email.png';
 import './contact.css';
 
 const Contact = () => {
+  const theme = useContext(ThemeContext);
   const form = useRef();
   const [userData, setUserData] = useState({
     user_name: '',
@@ -78,6 +81,7 @@ const Contact = () => {
 
           <form ref={form} onSubmit={submitHandler}>
             <input
+              className={`${theme.darkMode ? 'dark' : ''}`}
               type="text"
               placeholder="Name"
               name="user_name"
@@ -85,6 +89,7 @@ const Contact = () => {
               value={userData.user_name}
             />
             <input
+              className={`${theme.darkMode ? 'dark' : ''}`}
               type="text"
               placeholder="Subject"
               name="user_subject"
@@ -92,6 +97,7 @@ const Contact = () => {
               onChange={handleChange}
             />
             <input
+              className={`${theme.darkMode ? 'dark' : ''}`}
               type="text"
               placeholder="Email"
               name="user_email"
@@ -99,6 +105,7 @@ const Contact = () => {
               onChange={handleChange}
             />
             <textarea
+              className={`${theme.darkMode ? 'dark' : ''}`}
               name="message"
               placeholder="Message"
               rows="10"

@@ -1,0 +1,10 @@
+.app {
+  background-color: white;
+  transition: all 1s ease;
+}
+
+.app.dark {
+  background-color: rgb(54, 54, 54);
+  color: white;
+  transition: all 1s ease;
+}

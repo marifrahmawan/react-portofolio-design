@@ -1,6 +1,7 @@
 .intro {
   display: flex;
   height: 100vh;
+  z-index: 1;
 }
 
 .intro-left {
@@ -72,6 +73,7 @@
 .intro-right {
   flex: 1;
   position: relative;
+  z-index: 1;
 }
 
 .right-image-wrapper {
@@ -97,7 +99,6 @@
   position: absolute;
   bottom: 60px;
   left: 90px;
-  z-index: -1;
   background-color: rgb(36, 36, 36);
 }
 
@@ -107,6 +108,7 @@
   max-width: 100%;
   border-radius: 30px;
   overflow: hidden;
+  z-index: -1;
 }
 
 .me-image {
