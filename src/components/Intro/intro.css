@@ -34,7 +34,7 @@
 
 .intro-title-wrapper {
   height: 100%;
-  animation: move 10s ease-in-out infinite;
+  animation: move 10s ease-in-out infinite alternate;
 }
 
 @keyframes move {
@@ -61,6 +61,14 @@
   color: #59b256;
 }
 
+.intro-scroll {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  bottom: 30px;
+  left: 49%;
+}
+
 .intro-right {
   flex: 1;
   position: relative;
@@ -74,14 +82,31 @@
   position: relative;
 }
 
+.intro-right-bg {
+  clip-path: polygon(100% 0, 100% 100%, 26% 100%, 0 50%, 16% 0);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #59b256;
+}
+
+.right-image-card.bg {
+  position: absolute;
+  bottom: 60px;
+  left: 90px;
+  z-index: -1;
+  background-color: rgb(36, 36, 36);
+}
+
 .right-image-card {
-  height: 70%;
-  max-width: 100%;
   width: 50%;
-  border-radius: 50px;
+  height: 70vh;
+  max-width: 100%;
+  border-radius: 30px;
   overflow: hidden;
-  -webkit-box-shadow: -50px -80px 0px 5px rgb(36, 36, 36);
-  box-shadow: -50px -80px 0px 5px rgb(36, 36, 36);
 }
 
 .me-image {
