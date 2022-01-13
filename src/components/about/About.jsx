@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../context';
 
 import Award from '../../img/award.png';
 import Hobby from '../../img/hobby.jpeg';
@@ -6,6 +7,8 @@ import Hobby from '../../img/hobby.jpeg';
 import './about.css';
 
 const About = () => {
+  const theme = useContext(ThemeContext);
+
   return (
     <div className="about">
       <div className="about-left">
@@ -30,7 +33,7 @@ const About = () => {
         <div className="about-award">
           <img src={Award} alt="" className="about-award-img" />
           <div className="about-award-texts">
-            <h4 className="about-award-title">
+            <h4 className={`about-award-title ${theme.darkMode ? 'dark' : ''}`}>
               International Design Awards 2021
             </h4>
             <p className="about-award-desc">

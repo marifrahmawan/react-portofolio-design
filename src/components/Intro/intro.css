@@ -116,3 +116,42 @@
   width: 100%;
   object-fit: cover;
 }
+
+@media screen and (max-width: 480px) {
+  .intro {
+    flex-direction: column;
+  }
+
+  .intro-left-wrapper {
+    height: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-title-item {
+    justify-content: center;
+  }
+
+  .intro-right-bg {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 56% 100%);
+  }
+
+  .right-image-card.bg {
+    position: absolute;
+    bottom: 10px;
+    left: 100px;
+    background-color: rgb(36, 36, 36);
+  }
+
+  .right-image-card {
+    width: 40%;
+    height: 30vh;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: -1;
+  }
+}

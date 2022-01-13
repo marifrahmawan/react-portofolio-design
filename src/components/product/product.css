@@ -37,3 +37,12 @@
   transition: all 1s ease;
   /* transform: translateY(-100%); */
 }
+
+@media screen and (max-width: 480px) {
+  .product {
+    margin: 0 0 20px 0;
+    width: 40vw;
+    height: 35%;
+    border-radius: 5px 5px 0 0;
+  }
+}

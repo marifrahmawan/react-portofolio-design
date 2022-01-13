@@ -1,5 +1,4 @@
 .p-list {
-  /* background-color: red; */
   padding: 50px 100px;
   display: flex;
   flex-direction: column;
@@ -25,4 +24,23 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 480px) {
+  .p-list {
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  .p-list-texts {
+    width: 100%;
+  }
+
+  .p-list-title {
+    font-size: 40px;
+  }
+
+  .p-list-desc {
+    text-align: justify;
+  }
 }
