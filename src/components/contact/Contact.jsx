@@ -77,6 +77,12 @@ const Contact = () => {
         );
     } else {
       console.log('Form Error');
+      setIsClicked({
+        user_name: true,
+        user_subject: true,
+        user_email: true,
+        message: true,
+      });
     }
   };
 
