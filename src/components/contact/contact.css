@@ -68,16 +68,32 @@ input {
   transition: all 1s ease;
 }
 
+input.invalid {
+  background-color: rgba(214, 0, 0, 0.7);
+}
+
+input.invalid::placeholder {
+  color: black;
+}
+
 input.dark {
   background-color: rgb(68, 68, 68);
   color: white;
-  border: none;
+  border-bottom: 1px solid rgb(54, 54, 54);
   transition: all 1s ease;
 }
 
 input.dark::placeholder {
   color: white;
   transition: all 1s ease;
+}
+
+input.dark.invalid {
+  background-color: rgba(214, 0, 0, 0.7);
+}
+
+input.dark.invalid::placeholder {
+  color: black;
 }
 
 textarea {
@@ -90,16 +106,33 @@ textarea {
   transition: all 1s ease;
 }
 
+textarea.invalid {
+  background-color: rgba(214, 0, 0, 0.7);
+}
+
+textarea.invalid::placeholder {
+  color: black;
+}
+
 textarea.dark {
   background-color: rgb(68, 68, 68);
   color: white;
-  border: none;
+  border-bottom: 1px solid rgb(54, 54, 54);
+
   transition: all 1s ease;
 }
 
 textarea.dark::placeholder {
   color: white;
   transition: all 1s ease;
+}
+
+textarea.dark.invalid {
+  background-color: rgba(214, 0, 0, 0.7);
+}
+
+textarea.dark.invalid::placeholder {
+  color: black;
 }
 
 button {

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 import { ThemeContext } from '../../context';
@@ -11,11 +11,29 @@ import './contact.css';
 const Contact = () => {
   const theme = useContext(ThemeContext);
   const form = useRef();
+
+  const regularExp = {
+    containsAlphaNumeric: /^(?!-)(?!.*-)[A-Za-z0-9-]+(?<!-)$/,
+    containsNumber: /\d+/,
+    containsAlphabet: /[a-zA-Z]/,
+
+    onlyLetters: /^[A-Za-z _.-]+$/,
+    onlyNumbers: /^[0-9]+$/,
+    onlyMixOfAlphaNumeric: /^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/,
+  };
+
   const [userData, setUserData] = useState({
     user_name: '',
     user_subject: '',
     user_email: '',
     message: '',
+  });
+
+  const [isClicked, setIsClicked] = useState({
+    user_name: false,
+    user_subject: false,
+    user_email: false,
+    message: false,
   });
 
   const handleChange = (e) => {
@@ -24,30 +42,52 @@ const Contact = () => {
     });
   };
 
+  const handleClick = (e) => {
+    setIsClicked((prevState) => {
+      return { ...prevState, [e.target.name]: true };
+    });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-        form.current,
-        process.env.REACT_APP_EMAILJS_USER_ID
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setUserData({
-            user_name: '',
-            user_subject: '',
-            user_email: '',
-            message: '',
-          });
-        },
-        (error) => {
-          console.log('Failed', error.text);
-        }
-      );
+    if (
+      userData.user_name.trim().length > 0 &&
+      userData.user_subject.trim().length > 0 &&
+      userData.user_email.trim().length > 0 &&
+      userData.message.trim().length > 0
+    ) {
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          form.current,
+          process.env.REACT_APP_EMAILJS_USER_ID
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            setUserData({
+              user_name: '',
+              user_subject: '',
+              user_email: '',
+              message: '',
+            });
+
+            setIsClicked({
+              user_name: false,
+              user_subject: false,
+              user_email: false,
+              message: false,
+            });
+          },
+          (error) => {
+            console.log('Failed', error.text);
+          }
+        );
+    } else {
+      console.log('Form Error');
+    }
   };
 
   return (
@@ -81,36 +121,57 @@ const Contact = () => {
 
           <form ref={form} onSubmit={submitHandler}>
             <input
-              className={`${theme.darkMode ? 'dark' : ''}`}
+              className={`${theme.darkMode ? 'dark' : ''} ${
+                userData.user_name.trim().length <= 0 && isClicked.user_name
+                  ? 'invalid'
+                  : ''
+              }`}
               type="text"
               placeholder="Name"
               name="user_name"
-              onChange={handleChange}
               value={userData.user_name}
+              onChange={handleChange}
+              onBlur={handleClick}
             />
             <input
-              className={`${theme.darkMode ? 'dark' : ''}`}
+              className={`${theme.darkMode ? 'dark' : ''} ${
+                userData.user_subject.trim().length <= 0 &&
+                isClicked.user_subject
+                  ? 'invalid'
+                  : ''
+              }`}
               type="text"
               placeholder="Subject"
               name="user_subject"
               value={userData.user_subject}
               onChange={handleChange}
+              onBlur={handleClick}
             />
             <input
-              className={`${theme.darkMode ? 'dark' : ''}`}
+              className={`${theme.darkMode ? 'dark' : ''} ${
+                userData.user_email.trim().length <= 0 && isClicked.user_email
+                  ? 'invalid'
+                  : ''
+              }`}
               type="text"
               placeholder="Email"
               name="user_email"
               value={userData.user_email}
               onChange={handleChange}
+              onBlur={handleClick}
             />
             <textarea
-              className={`${theme.darkMode ? 'dark' : ''}`}
+              className={`${theme.darkMode ? 'dark' : ''} ${
+                userData.message.trim().length <= 0 && isClicked.message
+                  ? 'invalid'
+                  : ''
+              }`}
               name="message"
               placeholder="Message"
               rows="10"
               value={userData.message}
               onChange={handleChange}
+              onBlur={handleClick}
             ></textarea>
             <button type="submit">Submit</button>
           </form>
