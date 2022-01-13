@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 import { ThemeContext } from '../../context';
@@ -11,16 +11,6 @@ import './contact.css';
 const Contact = () => {
   const theme = useContext(ThemeContext);
   const form = useRef();
-
-  const regularExp = {
-    containsAlphaNumeric: /^(?!-)(?!.*-)[A-Za-z0-9-]+(?<!-)$/,
-    containsNumber: /\d+/,
-    containsAlphabet: /[a-zA-Z]/,
-
-    onlyLetters: /^[A-Za-z _.-]+$/,
-    onlyNumbers: /^[0-9]+$/,
-    onlyMixOfAlphaNumeric: /^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/,
-  };
 
   const [userData, setUserData] = useState({
     user_name: '',
